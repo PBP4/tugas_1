@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     String nama_form, tempat_lahir, tgl_lahir;
     EditText Inputnama, Inputtempat_lahir, Inputtgl_lahir;
+    TextView rError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,26 +24,28 @@ public class MainActivity extends AppCompatActivity {
         Inputnama = (EditText)findViewById(R.id.nama_form);
         Inputtempat_lahir = (EditText)findViewById(R.id.tempat_lahir);
         Inputtgl_lahir = (EditText)findViewById(R.id.tgl_lahir);
+        rError = (TextView) findViewById(R.id.result_error);
 
         Button submit = (Button)findViewById(R.id.regis);
         submit.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
-//                Inputnama.setText("Nama");
-//                Inputtempat_lahir.setText("Semarang");
-//                Inputtgl_lahir.setText("18-10-2022");
+            public void onClick(View view) {
                 nama_form = Inputnama.getText().toString();
                 tempat_lahir = Inputtempat_lahir.getText().toString();
                 tgl_lahir = Inputtgl_lahir.getText().toString();
-                Intent i = null;
-                i = new Intent(MainActivity.this, loginActivity.class);
-                Bundle b = new Bundle();
-                b.putString("parse_nama",nama_form);
-                b.putString("parse_tempat_lahir",tempat_lahir);
-                b.putString("parse_tgl_lahir",tgl_lahir);
+                if(!TextUtils.isEmpty(nama_form) || !TextUtils.isEmpty(tempat_lahir) || !TextUtils.isEmpty(tgl_lahir)){
+                    Intent i = null;
+                    i = new Intent(MainActivity.this, loginActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("parse_nama",nama_form);
+                    b.putString("parse_tempat_lahir",tempat_lahir);
+                    b.putString("parse_tgl_lahir",tgl_lahir);
 
-                i.putExtras(b);
-                startActivity(i);
+                    i.putExtras(b);
+                    startActivity(i);
+                } else {
+                rError.setText("Error! Form tidak boleh kosong.");
+                }
             }
         });
     }
