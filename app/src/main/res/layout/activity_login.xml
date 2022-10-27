@@ -34,12 +34,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Result Registrasi"
-            android:textSize="25sp"
             android:layout_marginTop="-15dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="Result Registrasi"
+            android:textSize="20sp" />
 
         <TextView
+            android:layout_marginTop="15dp"
             android:id="@+id/Rnama_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,6 +64,13 @@
             android:text="Tanggal Lahir"
             android:textSize="16sp" />
 
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:background="@color/tema"
+            android:layout_marginTop="45dp"/>
 
     </LinearLayout>
 
