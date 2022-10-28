@@ -37,7 +37,8 @@
             android:layout_marginTop="-15dp"
             android:gravity="center"
             android:text="Result Registrasi"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_marginTop="15dp"
@@ -69,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"
+            android:textStyle="bold"
             android:background="@color/tema"
             android:layout_marginTop="45dp"/>
 
