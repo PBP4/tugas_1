@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,9 +16,9 @@ public class loginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Rnama_form = (TextView)findViewById(R.id.Rnama_form);
-        Rtempat_lahir = (TextView)findViewById(R.id.Rtempat_lahir);
-        Rtgl_lahir = (TextView)findViewById(R.id.Rtgl_lahir);
+        Rnama_form = findViewById(R.id.Rnama_form);
+        Rtempat_lahir = findViewById(R.id.Rtempat_lahir);
+        Rtgl_lahir = findViewById(R.id.Rtgl_lahir);
 
         Bundle b = getIntent().getExtras();
 
@@ -28,18 +26,14 @@ public class loginActivity extends AppCompatActivity {
         Resulttempat_lahir = b.getString("parse_tempat_lahir");
         Resulttgl_lahir = b.getString("parse_tgl_lahir");
 
-        Rnama_form.setText(""+Resultnama);
-        Rtempat_lahir.setText(""+Resulttempat_lahir);
-        Rtgl_lahir.setText(""+Resulttgl_lahir);
+        Rnama_form.setText(String.format("%s", Resultnama));
+        Rtempat_lahir.setText(String.format("%s", Resulttempat_lahir));
+        Rtgl_lahir.setText(String.format("%s", Resulttgl_lahir));
 
-        Button back = (Button) findViewById(R.id.back);
-        back.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = null;
-                i = new Intent(loginActivity.this, MainActivity.class);
-                startActivity(i);
-            }
+        Button back = findViewById(R.id.back);
+        back.setOnClickListener(v -> {
+            Intent i = new Intent(loginActivity.this, MainActivity.class);
+            startActivity(i);
         });
     }
 
